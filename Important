@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do You Love Me?</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 35px 12px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: #fff0f5;
+  color: #8b1645;
+  overflow: hidden;
+}
+
+h1 { font-size: 32px; }
+
+.heart {
+  font-size: 100px;
+  margin: 25px;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.15); }
+}
+
+button {
+  border: none;
+  border-radius: 15px;
+  padding: 15px 30px;
+  font-size: 20px;
+  color: white;
+}
+
+#yes {
+  background: #e83e70;
+}
+
+#no {
+  background: #777;
+  position: fixed;
+  left: 55%;
+  top: 55%;
+  z-index: 5;
+}
+
+#answer {
+  display: none;
+  margin: 35px auto;
+  font-size: 25px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Do you love me? ❤️</h1>
+
+<div class="heart">❤️</div>
+
+<button id="yes" onclick="showLove()">Yes ❤️</button>
+
+<button id="no">No 💔</button>
+
+<div id="answer">
+  I knew it! ❤️🥹
+  <br><br>
+  I love you too! 💋❤️
+</div>
+
+<script>
+const no = document.getElementById("no");
+
+function runAway() {
+  const maxX = window.innerWidth - no.offsetWidth;
+  const maxY = window.innerHeight - no.offsetHeight;
+
+  no.style.left = Math.max(0, Math.random() * maxX) + "px";
+  no.style.top = Math.max(0, Math.random() * maxY) + "px";
+}
+
+no.addEventListener("touchstart", function(e) {
+  e.preventDefault();
+  runAway();
+});
+
+no.addEventListener("mouseover", runAway);
+
+no.addEventListener("click", runAway);
+
+function showLove() {
+  document.getElementById("answer").style.display = "block";
+  no.style.display = "none";
+}
+</script>
+
+</body>
+</html>
